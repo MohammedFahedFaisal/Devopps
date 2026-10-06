@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quickbite — Sign Up</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #fff8f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #222;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1050px;
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Left section */
+    .brand-section {
+      position: relative;
+      background: linear-gradient(145deg, #ff6b35, #ff3d00);
+      color: white;
+      padding: 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .brand-section::before,
+    .brand-section::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .brand-section::before {
+      width: 350px;
+      height: 350px;
+      right: -160px;
+      top: -120px;
+    }
+
+    .brand-section::after {
+      width: 280px;
+      height: 280px;
+      left: -130px;
+      bottom: -100px;
+    }
+
+    .logo {
+      position: relative;
+      z-index: 1;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ffe0b2;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      max-width: 380px;
+      color: #ffe9df;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .benefits {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #fff3ee;
+    }
+
+    .benefit-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    /* Form section */
+    .form-section {
+      padding: 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-header {
+      margin-bottom: 30px;
+    }
+
+    .form-header h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .form-header p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 0 15px;
+      font-size: 14px;
+      outline: none;
+      transition: 0.2s;
+      background: #fff;
+    }
+
+    .form-group input:focus {
+      border-color: #ff5a2c;
+      box-shadow: 0 0 0 3px rgba(255, 90, 44, 0.1);
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .password-strength {
+      height: 4px;
+      background: #eee;
+      border-radius: 5px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0;
+      transition: 0.3s;
+    }
+
+    .strength-text {
+      font-size: 11px;
+      margin-top: 5px;
+      color: #888;
+    }
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 5px 0 22px;
+      font-size: 12px;
+      color: #777;
+      line-height: 1.5;
+    }
+
+    .terms input {
+      margin-top: 3px;
+      accent-color: #ff5a2c;
+    }
+
+    .terms a {
+      color: #ff5722;
+      text-decoration: none;
+    }
+
+    .signup-btn {
+      width: 100%;
+      height: 52px;
+      border: none;
+      border-radius: 10px;
+      background: #ff5722;
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .signup-btn:hover {
+      background: #e94b1c;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(255, 87, 34, 0.25);
+    }
+
+    .signup-btn:active {
+      transform: translateY(0);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 25px 0;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      background: #eee;
+      flex: 1;
+    }
+
+    .social-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .social-btn {
+      height: 46px;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #444;
+      transition: 0.2s;
+    }
+
+    .social-btn:hover {
+      background: #fafafa;
+      border-color: #bbb;
+    }
+
+    .login-text {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .login-text a {
+      color: #ff5722;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .error {
+      color: #e53935;
+      font-size: 11px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .success-message {
+      display: none;
+      padding: 15px;
+      border-radius: 10px;
+      background: #e8f8ee;
+      color: #218838;
+      font-size: 13px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+
+      .brand-section {
+        min-height: 300px;
+        padding: 35px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .benefits {
+        display: none;
+      }
+
+      .form-section {
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      body {
+        padding: 0;
+      }
+
+      .container {
+        border-radius: 0;
+        min-height: 100vh;
+      }
+
+      .brand-section {
+        min-height: 250px;
+      }
+
+      .form-section {
+        padding: 28px 22px;
+      }
+
+      .social-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <!-- Brand panel -->
+    <section class="brand-section">
+      <div class="logo">
+        Quick<span>bite</span>
+      </div>
+
+      <div class="hero">
+        <h1>Good food.<br>Good mood.</h1>
+        <p>
+          Join Quickbite and discover delicious meals,
+          lightning-fast delivery, and your next favorite bite.
+        </p>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <span>Fast and reliable food delivery</span>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <span>Exclusive deals for members</span>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <span>Thousands of dishes to choose from</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signup form -->
+    <section class="form-section">
+      <div class="form-header">
+        <h2>Create account</h2>
+        <p>Sign up to start your Quickbite journey.</p>
+      </div>
+
+      <div class="success-message" id="successMessage">
+        🎉 Account created successfully! Welcome to Quickbite.
+      </div>
+
+      <form id="signupForm">
+
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            autocomplete="name"
+          />
+          <div class="error" id="nameError">
+            Please enter your name.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+          />
+          <div class="error" id="emailError">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="password"
+              placeholder="Create a password"
+              autocomplete="new-password"
+            />
+
+            <button
+              type="button"
+              class="password-toggle"
+              id="togglePassword"
+            >
+              Show
+            </button>
+          </div>
+
+          <div class="password-strength">
+            <div class="strength-bar" id="strengthBar"></div>
+          </div>
+
+          <div class="strength-text" id="strengthText">
+            Use 8+ characters with numbers and symbols.
+          </div>
+
+          <div class="error" id="passwordError">
+            Password must be at least 8 characters.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm password</label>
+
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Repeat your password"
+            autocomplete="new-password"
+          />
+
+          <div class="error" id="confirmError">
+            Passwords do not match.
+          </div>
+        </div>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" />
+          <label for="terms">
+            I agree to the
+            <a href="#">Terms of Service</a>
+            and
+            <a href="#">Privacy Policy</a>.
+          </label>
+        </div>
+
+        <button type="submit" class="signup-btn">
+          Create my account
+        </button>
+
+        <div class="divider">OR</div>
+
+        <div class="social-buttons">
+          <button type="button" class="social-btn">
+            Google
+          </button>
+
+          <button type="button" class="social-btn">
+            Apple
+          </button>
+        </div>
+
+        <p class="login-text">
+          Already have an account?
+          <a href="#">Log in</a>
+        </p>
+
+      </form>
+    </section>
+
+  </main>
+
+  <script>
+    const form = document.getElementById("signupForm");
+
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirmPassword");
+    const termsInput = document.getElementById("terms");
+
+    const togglePassword = document.getElementById("togglePassword");
+    const strengthBar = document.getElementById("strengthBar");
+    const strengthText = document.getElementById("strengthText");
+    const successMessage = document.getElementById("successMessage");
+
+    // Show / hide password
+    togglePassword.addEventListener("click", () => {
+      const isPassword =
+        passwordInput.type === "password";
+
+      passwordInput.type = isPassword ? "text" : "password";
+      togglePassword.textContent = isPassword ? "Hide" : "Show";
+    });
+
+    // Password strength
+    passwordInput.addEventListener("input", () => {
+      const password = passwordInput.value;
+
+      let strength = 0;
+
+      if (password.length >= 8) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+      const colors = [
+        "#eee",
+        "#e53935",
+        "#ff9800",
+        "#ffc107",
+        "#4caf50"
+      ];
+
+      const labels = [
+        "Use 8+ characters with numbers and symbols.",
+        "Weak password",
+        "Fair password",
+        "Good password",
+        "Strong password"
+      ];
+
+      strengthBar.style.width = `${strength * 25}%`;
+      strengthBar.style.background = colors[strength];
+      strengthText.textContent = labels[strength];
+    });
+
+    // Helper functions
+    function showError(id, show) {
+      document.getElementById(id).style.display =
+        show ? "block" : "none";
+    }
+
+    function validEmail(email) {
+      return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+    }
+
+    // Form submission
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      const confirmPassword = confirmInput.value;
+
+      let valid = true;
+
+      // Name validation
+      if (!name) {
+        showError("nameError", true);
+        valid = false;
+      } else {
+        showError("nameError", false);
+      }
+
+      // Email validation
+      if (!validEmail(email)) {
+        showError("emailError", true);
+        valid = false;
+      } else {
+        showError("emailError", false);
+      }
+
+      // Password validation
+      if (password.length < 8) {
+        showError("passwordError", true);
+        valid = false;
+      } else {
+        showError("passwordError", false);
+      }
+
+      // Confirm password
+      if (password !== confirmPassword || !confirmPassword) {
+        showError("confirmError", true);
+        valid = false;
+      } else {
+        showError("confirmError", false);
+      }
+
+      // Terms
+      if (!termsInput.checked) {
+        alert("Please agree to the Terms of Service and Privacy Policy.");
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Simulated signup success
+      successMessage.style.display = "block";
+      form.reset();
+
+      strengthBar.style.width = "0";
+      strengthText.textContent =
+        "Use 8+ characters with numbers and symbols.";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+</body>
+</html>

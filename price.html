@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBites - Price Comparison</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff7ed;
+            color: #333;
+        }
+
+        header {
+            background: #ff6b00;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            color: #e85d00;
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin: 25px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        input, select {
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        button {
+            background: #ff6b00;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #e85d00;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .restaurant {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .food {
+            color: #777;
+            margin: 10px 0;
+        }
+
+        .price {
+            font-size: 28px;
+            color: #ff6b00;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .delivery {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .best {
+            border: 3px solid #ff6b00;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 15px;
+            background: #ff6b00;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        @media(max-width: 800px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🍊 QuickBites</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Compare</a>
+        <a href="#">Orders</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>Price Comparison</h1>
+    <p>Find the best price for your favorite food across platforms.</p>
+
+    <div class="search-box">
+        <input type="text" id="foodInput" placeholder="Search food e.g. Chicken Biryani">
+
+        <select id="category">
+            <option>All Categories</option>
+            <option>Biryani</option>
+            <option>Pizza</option>
+            <option>Burgers</option>
+            <option>Desserts</option>
+        </select>
+
+        <button onclick="comparePrices()">Compare</button>
+    </div>
+
+    <div class="comparison" id="results">
+
+        <div class="card best">
+            <span class="badge">BEST PRICE</span>
+            <div class="restaurant">FoodExpress</div>
+            <div class="food">Chicken Biryani</div>
+            <div class="price">₹180</div>
+            <div class="delivery">Delivery: ₹20</div>
+            <button>Order Now</button>
+        </div>
+
+        <div class="card">
+            <div class="restaurant">QuickEats</div>
+            <div class="food">Chicken Biryani</div>
+            <div class="price">₹195</div>
+            <div class="delivery">Delivery: ₹25</div>
+            <button>Order Now</button>
+        </div>
+
+        <div class="card">
+            <div class="restaurant">MealGo</div>
+            <div class="food">Chicken Biryani</div>
+            <div class="price">₹210</div>
+            <div class="delivery">Delivery: ₹15</div>
+            <button>Order Now</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function comparePrices() {
+    const food = document.getElementById("foodInput").value;
+
+    if (food.trim() === "") {
+        alert("Please enter a food item.");
+        return;
+    }
+
+    alert("Comparing prices for " + food + "...");
+}
+</script>
+
+</body>
+</html>

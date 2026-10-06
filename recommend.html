@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBites - Recommendations</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff7ed;
+        }
+
+        header {
+            background: #ff6b00;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            color: #e85d00;
+            margin-bottom: 10px;
+        }
+
+        .preferences {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .preferences h2 {
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 10px 18px;
+            border-radius: 25px;
+            background: #fff0e0;
+            color: #e85d00;
+            cursor: pointer;
+            border: 1px solid #ffd0a3;
+        }
+
+        .tag.active {
+            background: #ff6b00;
+            color: white;
+        }
+
+        .recommendations {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .food-image {
+            height: 170px;
+            background: linear-gradient(135deg, #ff8a33, #ffb366);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+        }
+
+        .food-content {
+            padding: 20px;
+        }
+
+        .food-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            color: #ff6b00;
+            margin: 8px 0;
+        }
+
+        .reason {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            background: #ff6b00;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @media(max-width: 800px) {
+            .recommendations {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🍊 QuickBites</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Recommendations</a>
+        <a href="#">Profile</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>Recommended For You</h1>
+    <p>Personalized food suggestions based on your preferences.</p>
+
+    <div class="preferences">
+        <h2>Your Preferences</h2>
+
+        <div class="tags">
+            <div class="tag active" onclick="toggleTag(this)">🍗 Non-Veg</div>
+            <div class="tag" onclick="toggleTag(this)">🌶 Spicy</div>
+            <div class="tag" onclick="toggleTag(this)">🥗 Healthy</div>
+            <div class="tag" onclick="toggleTag(this)">🍕 Fast Food</div>
+            <div class="tag" onclick="toggleTag(this)">🍰 Desserts</div>
+        </div>
+    </div>
+
+    <div class="recommendations">
+
+        <div class="food-card">
+            <div class="food-image">🍛</div>
+
+            <div class="food-content">
+                <h3>Chicken Biryani</h3>
+
+                <div class="rating">★★★★★ 4.8</div>
+
+                <div class="reason">
+                    Recommended because you frequently order spicy food.
+                </div>
+
+                <button onclick="order('Chicken Biryani')">
+                    View Food
+                </button>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <div class="food-image">🍔</div>
+
+            <div class="food-content">
+                <h3>Chicken Burger</h3>
+
+                <div class="rating">★★★★☆ 4.5</div>
+
+                <div class="reason">
+                    Popular among users with similar preferences.
+                </div>
+
+                <button onclick="order('Chicken Burger')">
+                    View Food
+                </button>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <div class="food-image">🍕</div>
+
+            <div class="food-content">
+                <h3>Chicken Pizza</h3>
+
+                <div class="rating">★★★★★ 4.7</div>
+
+                <div class="reason">
+                    Matches your favorite fast-food category.
+                </div>
+
+                <button onclick="order('Chicken Pizza')">
+                    View Food
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function toggleTag(element) {
+    element.classList.toggle("active");
+}
+
+function order(food) {
+    alert("Opening " + food + "...");
+}
+</script>
+
+</body>
+</html>

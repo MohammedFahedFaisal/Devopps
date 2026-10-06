@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBites - Worker Payments</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff7ed;
+            color: #333;
+        }
+
+        header {
+            background: #ff6b00;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            color: #e85d00;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .stat h3 {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .amount {
+            color: #ff6b00;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .positive {
+            color: #16a34a;
+            margin-top: 5px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .panel h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 14px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            color: #777;
+        }
+
+        .status {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .incentive {
+            padding: 18px;
+            background: #fff3e6;
+            border-left: 5px solid #ff6b00;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .incentive h3 {
+            color: #e85d00;
+            margin-bottom: 7px;
+        }
+
+        .incentive p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .reward {
+            font-weight: bold;
+            color: #ff6b00;
+            margin-top: 8px;
+        }
+
+        button {
+            background: #ff6b00;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        @media(max-width: 900px) {
+            .dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 500px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🍊 QuickBites</div>
+
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Payments</a>
+        <a href="#">Incentives</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>Worker Payments & Incentives</h1>
+    <p>Manage earnings, payments and performance rewards.</p>
+
+    <div class="dashboard">
+
+        <div class="stat">
+            <h3>Total Earnings</h3>
+            <div class="amount">₹28,450</div>
+            <div class="positive">↑ 12.5% this month</div>
+        </div>
+
+        <div class="stat">
+            <h3>Pending Payment</h3>
+            <div class="amount">₹4,250</div>
+            <div>Processing</div>
+        </div>
+
+        <div class="stat">
+            <h3>Completed Deliveries</h3>
+            <div class="amount">186</div>
+            <div class="positive">↑ 18 this week</div>
+        </div>
+
+        <div class="stat">
+            <h3>Incentive Earned</h3>
+            <div class="amount">₹2,800</div>
+            <div class="positive">Excellent performance!</div>
+        </div>
+
+    </div>
+
+    <div class="main-grid">
+
+        <div class="panel">
+
+            <h2>Payment History</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Worker</th>
+                        <th>Deliveries</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>06 Oct</td>
+                        <td>Arun Kumar</td>
+                        <td>32</td>
+                        <td>₹5,240</td>
+                        <td><span class="status">Paid</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>05 Oct</td>
+                        <td>Rahul S</td>
+                        <td>28</td>
+                        <td>₹4,680</td>
+                        <td><span class="status">Paid</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>04 Oct</td>
+                        <td>Vijay R</td>
+                        <td>25</td>
+                        <td>₹4,120</td>
+                        <td><span class="status">Paid</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>03 Oct</td>
+                        <td>Karthik P</td>
+                        <td>30</td>
+                        <td>₹4,950</td>
+                        <td><span class="status">Paid</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <br>
+
+            <button onclick="processPayment()">
+                Process Payments
+            </button>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>Available Incentives</h2>
+
+            <div class="incentive">
+                <h3>🔥 Peak Hour Bonus</h3>
+                <p>Complete 10 deliveries between 6 PM and 9 PM.</p>
+                <div class="reward">Reward: ₹500</div>
+            </div>
+
+            <div class="incentive">
+                <h3>⭐ Top Performer</h3>
+                <p>Maintain a rating above 4.8 this week.</p>
+                <div class="reward">Reward: ₹750</div>
+            </div>
+
+            <div class="incentive">
+                <h3>🚴 Delivery Champion</h3>
+                <p>Complete more than 50 deliveries this week.</p>
+                <div class="reward">Reward: ₹1,000</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function processPayment() {
+    alert("Payment processing initiated successfully!");
+}
+</script>
+
+</body>
+</html>
